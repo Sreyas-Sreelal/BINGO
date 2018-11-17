@@ -10,7 +10,7 @@ int bingoCard[ROW][COLUMN],bingoCard_Com[ROW][COLUMN],called[25];
 int g=0;
 
 
-
+//ROBIN
 void display_card_player()
 {
     int i=0,j;
@@ -18,7 +18,7 @@ void display_card_player()
     while(i<5)
         {
             printf("%c\t",bingoName[i]);
-            i++;      
+            i++;
         }
     printf("\n");
     for(i=0;i<ROW;++i,printf("\n"))
@@ -32,7 +32,7 @@ void display_card_Com()
     while(i<5)
         {
             printf("%c\t",bingoName_Com[i]);
-            i++;      
+            i++;
         }
     printf("\n");
     for(i=0;i<ROW;++i,printf("\n"))
@@ -44,7 +44,7 @@ void display_card_Com()
 void CreateBingoCard(int Card[ROW][COLUMN])
 {
     int i,j,k,randomIndex;
-    //An array consisting of numbers 1 to 25 
+    //An array consisting of numbers 1 to 25
     //Idhu eduth nammal angotum ingotum itt shufflum
 
     static int RandomNumbers[25] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
@@ -60,15 +60,15 @@ void CreateBingoCard(int Card[ROW][COLUMN])
     for(i=0;i<ROW;++i)
         for(j=0;j<COLUMN;++j)
             Card[i][j] = RandomNumbers[++k];
-    
+
 }
 int bingoName_pos=0;
 void check_player()
 {
-    int count=0,i,j;
-    for(i=0;i<5;i++)
-        for(j=0;j<5;j++)
-            if(bingoCard[i][j]==0)
+    int count=0,s,r;
+    for(s=0;s<5;s++)
+        for(r=0;r<5;r++)
+            if(bingoCard[s][r]==0)
             {
                 count++;
                 if(count==5)
@@ -79,9 +79,9 @@ void check_player()
                         printf("\nU WON!!!!!!!\n");
                 }
             }
-    for(j=0;j<5;j++)
-        for(i=0;i<5;i++)
-            if(bingoCard[i][j]==0)
+    for(r=0;r<5;r++)
+        for(s=0;s<5;s++)
+            if(bingoCard[s][r]==0)
             {
                 count++;
                 if(count==5)
@@ -97,10 +97,10 @@ void check_player()
 int bingoName_Com_pos=0;
 void check_Com()
 {
-    int count_Com=0,i,j;
-    for(i=0;i<5;i++)
+    int count_Com=0,s,r,j;
+    for(s=0;s<5;s++)
         for(j=0;j<5;j++)
-            if(bingoCard_Com[i][j]==0)
+            if(bingoCard_Com[s][r]==0)
             {
                 count_Com++;
                 if(count_Com==5)
@@ -111,9 +111,9 @@ void check_Com()
                         printf("\nU WON!!!!!!!\n");
                 }
             }
-    for(j=0;j<5;j++)
-        for(i=0;i<5;i++)
-            if(bingoCard_Com[i][j]==0)
+    for(r=0;r<5;r++)
+        for(s=0;s<5;s++)
+            if(bingoCard_Com[s][r]==0)
             {
                 count_Com++;
                 if(count_Com==5)
@@ -190,7 +190,7 @@ void main()
     //adhyam program run cheyumbol 3 4 5 6 enna pattern adhyam rand() function call cheythapol ondayengil adutha thavan program
     //run cheyumbol adhyam kittunna sequence um 3 4 5 6 arikkum
     //Nammal srand upayogich ee starting point mattum adhu uniqum avande adhinu eppalum unique ayikondirikunna time vech thanne starting point aakum
-    //time() function ente value oro millli second um marikondirikum adhu unique um arikum (unix operating system ondayappol mothal kedan adikunna clock allel increment cheyunna varaible polle enn chindhikku) 
+    //time() function ente value oro millli second um marikondirikum adhu unique um arikum (unix operating system ondayappol mothal kedan adikunna clock allel increment cheyunna varaible polle enn chindhikku)
     srand ( time(NULL) );
     CreateBingoCard(bingoCard);
     display_card_player();
@@ -202,5 +202,5 @@ void main()
         check_player();
         call_Com();
     }while(bingoName_pos!=4 || bingoName_Com_pos!=4);
-    
+
 }
